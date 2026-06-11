@@ -1,0 +1,7 @@
+names:
+  0: Crack
+  1: Pothole
+path: A:\road damage\ml_model\dataset_yolo
+test: ''
+train: images/train
+val: images/val

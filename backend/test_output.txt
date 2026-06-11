@@ -1,0 +1,9 @@
+--- HSV Saturation Test ---
+Pure Gray (Road)     RGB(128, 128, 128) -> Saturation (0-255): 0
+Dark Gray (Asphalt)  RGB( 60,  60,  60) -> Saturation (0-255): 0
+Brownish Mud         RGB(139, 115,  85) -> Saturation (0-255): 99
+Light Skin Tone      RGB(241, 194, 125) -> Saturation (0-255): 123
+Medium Skin Tone     RGB(198, 134,  66) -> Saturation (0-255): 170
+Dark Skin Tone       RGB( 61,  34,  18) -> Saturation (0-255): 180
+Bright Yellow/Orange RGB(255, 200,   0) -> Saturation (0-255): 255
+Text Page (White)    RGB(245, 245, 245) -> Saturation (0-255): 0

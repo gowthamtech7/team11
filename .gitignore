@@ -1,0 +1,35 @@
+# Python Virtual Environments & Cache
+venv/
+backend/venv/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node / Frontend dependencies & build artifacts
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.eslintcache
+
+# Sensitive Environment Configuration
+.env
+backend/.env
+
+# Local Databases
+*.db
+*.sqlite3
+backend/road_damage.db
+road_damage.db
+
+# IDE & OS-specific files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Uploaded media (avoid committing user uploads)
+backend/static/uploads/*
+!backend/static/uploads/.gitkeep

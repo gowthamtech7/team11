@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+tensorflow
+numpy
+opencv-python
+pillow
+passlib
+python-jose
+python-dotenv

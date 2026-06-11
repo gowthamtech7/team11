@@ -1,0 +1,6 @@
+# User authentication and roles for FastAPI
+fastapi-users[sqlalchemy]
+passlib[bcrypt]
+jwt
+python-jose
+email-validator
