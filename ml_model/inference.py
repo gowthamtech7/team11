@@ -1,8 +1,16 @@
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Force CPU-only mode
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'   # Suppress logging
+
 import numpy as np
 import cv2
 from PIL import Image
 import tensorflow as tf
+
+# Limit threads to conserve memory on Render Free Tier (512MB RAM limit)
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
 from tensorflow.keras.models import load_model
 
 MODEL_PATH = 'road_damage_model.h5'
