@@ -643,3 +643,30 @@ def get_analytics(db: Session = Depends(get_db)):
         "trend": trend_list,
         "tickets": tickets
     })
+
+@app.get("/debug-model")
+async def debug_model():
+    backend_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(backend_dir)
+    model_path = os.path.join(project_root, 'ml_model', 'road_damage_model.h5')
+    
+    exists = os.path.exists(model_path)
+    size = os.path.getsize(model_path) if exists else -1
+    
+    error_msg = None
+    try:
+        from tensorflow.keras.models import load_model
+        m = load_model(model_path)
+        load_success = True
+    except Exception as e:
+        load_success = False
+        import traceback
+        error_msg = f"{str(e)}\n\nTraceback:\n{traceback.format_exc()}"
+        
+    return {
+        "model_path": model_path,
+        "exists": exists,
+        "size_bytes": size,
+        "load_success": load_success,
+        "error": error_msg
+    }
