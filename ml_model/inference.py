@@ -90,6 +90,33 @@ class RoadDamagePredictor:
 
     def _load_model(self):
         if os.path.exists(self.model_path):
+            # Dynamically sanitize the model config to remove quantization_config (Keras 3 deserialization bug)
+            try:
+                import h5py
+                import json
+                with h5py.File(self.model_path, 'r+') as f:
+                    if 'model_config' in f.attrs:
+                        config_data = f.attrs['model_config']
+                        if isinstance(config_data, bytes):
+                            config_data = config_data.decode('utf-8')
+                        config = json.loads(config_data)
+                        
+                        def remove_keys(obj):
+                            if isinstance(obj, dict):
+                                if 'quantization_config' in obj:
+                                    del obj['quantization_config']
+                                for k, v in list(obj.items()):
+                                    remove_keys(v)
+                            elif isinstance(obj, list):
+                                for item in obj:
+                                    remove_keys(item)
+                                    
+                        remove_keys(config)
+                        f.attrs['model_config'] = json.dumps(config).encode('utf-8')
+                print("Model config sanitized successfully.")
+            except Exception as e:
+                print(f"Warning: could not sanitize model config: {e}")
+
             try:
                 self.model = load_model(self.model_path)
                 print("Model loaded successfully!")
