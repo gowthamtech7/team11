@@ -1,3 +1,13 @@
+---
+title: Road Damage Detection API
+emoji: 🛣️
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Road Damage Detection & Smart Complaint Management System
 
 ## Quick Start (Windows)
