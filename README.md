@@ -8,40 +8,98 @@ app_port: 7860
 pinned: false
 ---
 
-# Road Damage Detection & Smart Complaint Management System
+# 🛣️ Road Damage Detection & Smart Complaint Management System
 
-## Quick Start (Windows)
-1. Double-click `run_backend.bat` to start the server.
-2. Double-click `run_frontend.bat` to start the website.
-3. Open http://localhost:5173 to use the app.
+An AI-driven platform designed to detect road damage (potholes, cracks) in real-time, assess maintenance severity, and streamline complaint management for civic authorities.
 
-## Overview
-This project is an AI-based system designed to detect road damage (like potholes, cracks) using a Deep Learning model (CNN). It automatically categorizes the damage severity and generates complaint tickets for authorities to review.
+---
 
-## Architecture
-- **Frontend**: React (Vite) - User interface for uploading images and viewing reports.
-- **Backend**: FastAPI (Python) - Handles API requests, processes images, and manages the database.
-- **AI Model**: TensorFlow/MobilenetV2 - Pre-trained model fine-tuned for road damage detection.
-- **Database**: SQLite - Stores ticket info and image references.
+## 🔗 Live Deployments
 
-## Setup Instructions
+* **💻 Interactive Frontend UI:** [https://team11-vert.vercel.app](https://team11-vert.vercel.app) (Hosted on Vercel)
+* **⚙️ Backend API Service:** [https://team11-4ujl.onrender.com](https://team11-4ujl.onrender.com) (Hosted on Render)
+
+---
+
+## 🛠️ Architecture & Tech Stack
+
+* **Frontend:** React.js (Vite) + Leaflet (GPS/Map Tracker) + Recharts (Analytics Dashboard) + Vanilla CSS (Glassmorphism & Rich Micro-animations).
+* **Backend:** FastAPI (Python 3.9) + SQLAlchemy ORM.
+* **Database:** SQLite (SQL-based relational database).
+* **AI/ML Model:** TensorFlow/Keras fine-tuned MobileNetV2 for CPU-efficient, high-accuracy road distress classification.
+* **Email System:** SMTP-based verification & escalation workflow.
+
+---
+
+## ✨ Features
+
+1. **AI-Powered Diagnostics:** Instantly classifies road damage (e.g., Potholes, Cracks) and calculates severity/confidence scores on image upload.
+2. **Interactive GPS Mapping:** Automatically tracks damage coordinates and pins them onto a live interactive map for maintenance workers.
+3. **Admin Command Center:** Dashboard for civic authorities to oversee tickets, write administrator feedback, track analytics, and trigger repairs.
+4. **Resolution Verification Loop:** Admin uploads proof of repair -> AI runs verification -> system emails the citizen to confirm the fix (Yes/No).
+5. **Auto-Escalation Engine:** Unresolved tickets are automatically flagged and escalated to higher authorities.
+
+---
+
+## 💻 How to Run Locally
 
 ### Prerequisites
-- Python 3.8+
-- Node.js & npm
+* Python 3.9+
+* Node.js & npm
 
-### Backend Setup
-1. `cd backend`
-2. `py -m venv venv`
-3. `venv\Scripts\activate`
-4. `pip install -r requirements.txt`
-5. `py -m uvicorn main:app --reload`
+---
 
-### Frontend Setup
-1. `cd frontend`
-2. `npm install`
-3. `npm run dev`
+### 1. Setup the Backend API
 
-### ML Model Training
-1. `cd ml_model`
-2. `py train.py`
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Create and activate a Python virtual environment:
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the FastAPI development server:
+   ```bash
+   python -m uvicorn main:app --reload
+   ```
+   *The backend will run locally at `http://127.0.0.1:8000`.*
+
+---
+
+### 2. Setup the Frontend UI
+
+1. Open a new terminal window and navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+2. Install Node modules:
+   ```bash
+   npm install
+   ```
+3. Run the Vite development server:
+   ```bash
+   npm run dev
+   ```
+   *Open `http://localhost:5173` in your browser to view the application.*
+
+---
+
+## 🔑 Demo Login Credentials
+
+You can test the live deployment using these pre-populated test accounts:
+
+* **Administrator Portal:**
+  * **Email:** `a@gmail.com`
+  * **Role:** Admin (Allows access to the map tracker and analytics charts)
+
+* **Citizen Center:**
+  * **Email:** `gow@gmail.com` (or create a new account via the frontend's sign-up page)
