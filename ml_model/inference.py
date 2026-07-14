@@ -8,8 +8,11 @@ from PIL import Image
 import tensorflow as tf
 
 # Limit threads to conserve memory on Render Free Tier (512MB RAM limit)
-tf.config.threading.set_intra_op_parallelism_threads(1)
-tf.config.threading.set_inter_op_parallelism_threads(1)
+try:
+    tf.config.threading.set_intra_op_parallelism_threads(1)
+    tf.config.threading.set_inter_op_parallelism_threads(1)
+except RuntimeError:
+    pass
 
 from tensorflow.keras.models import load_model
 
