@@ -3,7 +3,7 @@ import axios from "axios";
 import { User, Mail, Phone, Save, Edit3 } from "lucide-react";
 import { useNotification } from "../NotificationContext";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 export default function ProfilePage({ user }) {
     const [profile, setProfile] = useState(null);

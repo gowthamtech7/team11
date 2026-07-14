@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNotification } from '../NotificationContext';
 import { RefreshCcw, Ticket as TicketIcon, Calendar, CheckSquare, AlertTriangle, MapPin } from 'lucide-react';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
 const statusConfig = {
   'open':               { bg: 'rgba(239,68,68,0.14)',   text: '#f87171', border: 'rgba(239,68,68,0.3)'   },
