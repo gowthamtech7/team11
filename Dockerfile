@@ -21,9 +21,9 @@ COPY backend/ ./backend
 COPY ml_model/ ./ml_model
 
 # Download the real model binary from Hugging Face to bypass Render's lack of Git LFS support
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl ca-certificates && \
     curl -L -o ml_model/road_damage_model.h5 https://huggingface.co/spaces/gowtham7643/road-damage/resolve/main/ml_model/road_damage_model.h5 && \
-    apt-get purge -y curl && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+    apt-get purge -y curl ca-certificates && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 # Change working directory to backend so imports resolve correctly
 WORKDIR /app/backend
