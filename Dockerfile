@@ -20,10 +20,13 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY backend/ ./backend
 COPY ml_model/ ./ml_model
 
+# Change working directory to backend so imports resolve correctly
+WORKDIR /app/backend
+
 # Expose port (7860 is default for Hugging Face Spaces, Render uses dynamic $PORT)
 EXPOSE 7860
 
 # Command to run. We use uvicorn to start the app.
 # Note: Hugging Face Spaces automatically binds to port 7860.
 # Render will automatically map the container port or let you expose it.
-CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-7860}"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}"]
