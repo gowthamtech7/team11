@@ -3,7 +3,7 @@ uvicorn
 sqlalchemy
 pydantic
 python-multipart
-tensorflow==2.15.0
+tensorflow>=2.16.1
 numpy<2.0.0
 opencv-python
 pillow
